@@ -6,7 +6,9 @@ const validateBody = schema => {
         if (!req.body || Object.keys(req.body).length === 0) {
             if (schema === updateFavoriteSchema)
             throw httpError(400, 'missing fields favorite');
-
+            
+            if (!req.body.email) throw httpError(400, 'missing required field email');
+            
             throw httpError(400, 'missing fields');
         }
         const { error } = schema.validate(req.body);
