@@ -29,7 +29,9 @@ const sendEmail = async (email, verificationToken) => {
         </p>`,
     };
 
-    const verificationMail = await transport.sendMail(sendLetter).then(() => console.log('Email send success')).catch(err => console.log(err));
+    const verificationMail = await transport.sendMail(sendLetter)
+    .then(() => console.log('Email send success'))
+    .catch(err => console.log(err));
 
     return verificationMail;
 };
